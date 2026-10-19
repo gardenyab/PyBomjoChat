@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#171715">
+    <title>PyBomjoChat</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div><strong>PyBomjo</strong><span>LOCAL AI</span></div>
+          <button class="icon-button sidebar-toggle" id="sidebar-toggle" aria-label="Скрыть боковую панель">‹</button>
+        </div>
+
+        <button class="new-chat-button" id="new-chat">
+          <span class="plus-icon">＋</span> Новый чат <kbd>Ctrl K</kbd>
+        </button>
+
+        <div class="section-label">ВАШИ ЧАТЫ <span id="chat-count">0</span></div>
+        <nav class="chat-list" id="chat-list" aria-label="Сохранённые чаты"></nav>
+        <div class="sidebar-footer">
+          <div class="local-indicator"><span></span> Работает локально</div>
+          <div class="sidebar-note">История хранится на этом устройстве</div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="mobile-brand"><div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div> PyBomjo</div>
+          <div class="chat-heading">
+            <div class="current-chat-title" id="current-chat-title">Новый чат</div>
+            <button class="model-button" id="model-button" aria-haspopup="listbox">
+              <span class="model-status"></span><span id="current-model">Загрузка…</span><span class="chevron">⌄</span>
+            </button>
+          </div>
+          <div class="topbar-actions">
+            <button class="web-badge" title="Модель может выполнять веб-поиск по запросу">⌕ <span>Веб-поиск</span></button>
+            <button class="icon-button menu-toggle" id="menu-toggle" aria-label="Открыть чаты">☰</button>
+          </div>
+          <div class="model-menu" id="model-menu" role="listbox" aria-label="Выбрать модель" hidden></div>
+        </header>
+
+        <section class="conversation" id="conversation" aria-live="polite">
+          <div class="welcome" id="welcome">
+            <div class="welcome-orb"><span></span><span></span><span></span></div>
+            <div class="eyebrow">ВАШ ЛОКАЛЬНЫЙ AI-ПОМОЩНИК</div>
+            <h1>С чего начнём?</h1>
+            <p>Задайте вопрос, найдите информацию в интернете<br class="desktop-break"> или попросите помочь с файлами проекта.</p>
+            <div class="suggestions">
+              <button class="suggestion" data-prompt="Найди в интернете последние новости об искусственном интеллекте">◌ <span><strong>Найти в интернете</strong><small>Поиск актуальной информации</small></span><span class="suggestion-arrow">↗</span></button>
+              <button class="suggestion" data-prompt="Объясни, как работает потоковая генерация текста">⌁ <span><strong>Объяснить сложное</strong><small>Просто и по делу</small></span><span class="suggestion-arrow">↗</span></button>
+              <button class="suggestion" data-prompt="Помоги разобраться с файлами моего проекта">⌘ <span><strong>Помочь с проектом</strong><small>Чтение и запись файлов</small></span><span class="suggestion-arrow">↗</span></button>
+            </div>
+          </div>
+          <div class="message-list" id="message-list"></div>
+        </section>
+
+        <div class="composer-area">
+          <form class="composer" id="composer">
+            <textarea id="prompt" rows="1" placeholder="Напишите сообщение…" aria-label="Сообщение"></textarea>
+            <div class="composer-bottom">
+              <div class="composer-hints"><span class="hint-icon">↵</span> отправить <span class="hint-divider">·</span> <kbd>/</kbd> команды</div>
+              <div class="composer-actions">
+                <span class="composer-model" id="composer-model">локальная модель</span>
+                <button class="send-button" id="send-button" type="submit" aria-label="Отправить сообщение"><span>↑</span></button>
+              </div>
+            </div>
+          </form>
+          <div class="composer-disclaimer">PyBomjo может допускать ошибки. Проверяйте важную информацию.</div>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
